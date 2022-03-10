@@ -1,0 +1,15 @@
+{
+	"compilerOptions": {
+		"module": "es6",
+		"target": "es2019",
+		"lib": ["ES2019"],
+		"sourceMap": true,
+		"strict": true,
+		"moduleResolution": "Node",
+		"resolveJsonModule": true,
+		"allowSyntheticDefaultImports": true
+	},
+	"include": [
+		"src"
+	]
+}

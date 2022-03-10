@@ -1,0 +1,121 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "wynnscript",
+	"patterns": [
+        { "include": "#numbers" },
+		{ "include": "#strings" },
+        { "include": "#booleans" },
+        { "include": "#comments" },
+        { "include": "#keywords" },
+        { "include": "#functions" },
+        { "include": "#variables" }
+	],
+	"repository": {
+        "numbers": {
+			"patterns": [
+                {
+				    "name": "constant.numeric.wynnscript",
+				    "match": "\\b[0-9]+\\.?[0-9]*\\b"
+			    }
+            ]
+		},
+		"strings": {
+			"name": "string.quoted.double.wynnscript",
+			"begin": "\\@?\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.wynnscript",
+					"match": "\\\\."
+				},
+                {
+					"name": "variable.wynnscript",
+					"match": "\\{\\}"
+				}
+			]
+		},
+        "booleans": {
+			"patterns": [
+                {
+				    "name": "constant.language.boolean.wynnscript",
+				    "match": "\\b(true|false)\\b"
+			    }
+            ]
+		},
+        "comments": {
+            "patterns": 
+            [
+                {
+					"name": "comment.block.wynnscript",
+					"begin": "/\\*",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.definition.comment.wynnscript"
+						}
+					},
+					"end": "\\*/",
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.definition.comment.wynnscript"
+						}
+					}
+				},
+                {
+					"name": "comment.block.wynnscript",
+					"begin": "\\#\\*",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.definition.comment.wynnscript"
+						}
+					},
+					"end": "\\*\\#",
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.definition.comment.wynnscript"
+						}
+					}
+				},
+                {
+                    "name": "comment.line.wynnscript",
+			        "match": "(\\/\\/|\\#).*",
+                    "captures": {
+						"1": {
+							"name": "punctuation.definition.comment.wynnscript"
+						}
+					}
+                }
+            ]
+		},
+		"keywords": {
+			"patterns": [
+                {
+				    "name": "keyword.control.wynnscript",
+				    "match": "\\b(if|else|while|break|atomic)\\b"
+			    }
+            ]
+		},
+        "functions": {
+			"patterns": [{
+				"name": "entity.name.function.wynnscript",
+				"match": "\\b[_[:alpha:]][_[:alnum:]]*(?=\\()"
+			}]
+		},
+        "variables": {
+			"patterns": [
+                {
+					"name": "keyword.type.wynnscript",
+                    "match": "\\bvar\\b"
+                },
+				{
+					"name": "entity.name.class.wynnscript",
+                    "match": "(?<=var *.* *= *)[_[:alpha:]][_[:alnum:]]*"
+                },
+                {
+                    "name": "variable.wynnscript",
+                    "match": "\\b[_[:alpha:]][_[:alnum:]]*"
+                }
+            ]
+		}
+	},
+	"scopeName": "source.wynnscript"
+}
